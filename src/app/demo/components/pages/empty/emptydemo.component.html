@@ -1,8 +1,140 @@
-<div class="grid">
-    <div class="col-12">
-        <div class="card">
-            <h4>Empty Page</h4>
-            <p>This is your empty page template to start building beautiful applications.</p>
+<!--top card -->
+<div class="card border-primary mb-3 bg-primary">
+    <div style="display: flex; align-items: center;">
+        <img alt="" id="img1" src="assets/image/baby1.svg" style="width: 100px;height: 100px;">
+        <h5 style="text-align: center; margin: 0 auto; ">PORTRAIT DE L'ENFANT</h5>
+    </div>
+    <div style="display: flex; align-items: center;">
+        <h5 style="text-align: center;margin: 0 auto; font-family: cursive, sans-serif;">INTERVENTIONS ET SOUTIENS DE
+            L'EDUCATRICE</h5>
+    </div>
+</div>
+
+
+<!--Socioaffectif card-->
+<div style="display: flex">
+    <div class="col-12 md:col-6">
+        <div class="card border-primary mb-3  bg-primary" style="min-height: 25rem ">
+            <h5 class="p-card-title">Socioaffectif</h5>
+            <div class="dropdown">
+                <p-button
+                    (click)="myFunction()" class="dropbtn"
+
+                    styleClass="p-button-rounded p-button-text">
+                    <img alt="logo" src="assets/image/pencil.png" style="width: 2rem"/>
+                </p-button>
+                <div class="dropdown-content" id="myDropdown" >
+                    <input type="text" placeholder="Search.." id="myInput" (keyup)="filterFunction()">
+
+                    <option  > Parler </option>
+                    <option >crier</option>
+                    <option >courir </option>
+                    <option >manger tout seul </option>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="col-12 md:col-6">
+        <div class="card border-primary mb-3  bg-primary" style="min-height: 25rem ">
+            <h5 class="p-card-title">Cognitif</h5>
+            <p-button
+                (click)="menu.toggle($event)"
+
+                styleClass="p-button-rounded p-button-text">
+                <img alt="logo" src="assets/image/pencil.png" style="width: 2rem"/>
+            </p-button>
+            <p-menu #menu [model]="items1" [popup]="true" ></p-menu>
         </div>
     </div>
 </div>
+<div class="flex">
+    <div class="col-12 md:col-6">
+        <div class="card border-primary mb-3  bg-primary" style="min-height: 25rem ">
+            <h5 class="p-card-title">Physique</h5>
+            <p-button
+                (click)="menu.toggle($event)"
+
+                styleClass="p-button-rounded p-button-text">
+                <img alt="logo" src="assets/image/pencil.png" style="width: 2rem"/>
+            </p-button>
+            <p-menu #menu [model]="items1" [popup]="true" ></p-menu>
+
+
+        </div>
+    </div>
+
+    <div class="col-12 md:col-6">
+        <div class="card border-primary mb-3  bg-primary" style="min-height: 25rem ">
+            <h5 class="p-card-title">Language</h5>
+
+            <p-button
+                (click)="menu.toggle($event)"
+
+                styleClass="p-button-rounded p-button-text">
+                <img alt="logo" src="assets/image/pencil.png" style="width: 2rem"/>
+            </p-button>
+
+
+        </div>
+    </div>
+</div>
+
+
+<div class="card ">
+
+    <h5>Commentaires et anecdotes</h5>
+    <div class="col-12 md:col-6">
+        <img alt="logo" src="assets/image/pencil.png" style="width: 2rem"/>
+        <textarea class="p-Inputtext-res" pInputTextarea placeholder="Vos Commentaires"
+                  style="min-width: 770px "></textarea>
+
+    </div>
+
+
+</div>
+<div class="cardPlain">
+    <div class="card flex justify-content-center">
+        <p-dropdown [(ngModel)]="selectedCountry" [filter]="true" [showClear]="true" filterBy="name" optionLabel="name"
+                    placeholder="Select a Country">
+            <ng-template pTemplate="selectedItem">
+                <div *ngIf="selectedCountry" class="flex align-items-center gap-2">
+
+                    <div>{{ selectedCountry }}</div>
+                </div>
+            </ng-template>
+            <ng-template let-country pTemplate="item">
+                <div class="flex align-items-center gap-2">
+                    <img [class]="'flag flag-' + country.code.toLowerCase()"
+                         src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png" style="width: 18px"/>
+                    <div>{{ country.name }}</div>
+                </div>
+            </ng-template>
+        </p-dropdown>
+        <div class="dropdown">
+            <p-button
+
+
+                styleClass="p-button-rounded p-button-text">
+                <img alt="logo" src="assets/image/pencil.png" style="width: 2rem"/>
+            </p-button>
+
+        </div>
+
+        <h5>Virtual Scroll (10000 Items)</h5>
+
+
+
+    </div>
+
+</div>
+
+
