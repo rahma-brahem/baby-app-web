@@ -17,6 +17,8 @@ import { ImageModule } from 'primeng/image';
 import {AccordionModule} from "primeng/accordion";
 import {FormsModule} from "@angular/forms";
 import {PickListModule} from "primeng/picklist";
+import {ChipModule} from "primeng/chip";
+import {SidebarModule} from "primeng/sidebar";
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import {PickListModule} from "primeng/picklist";
         DropdownModule,
         AccordionModule,
         FormsModule,
-        PickListModule
+        PickListModule,
+        ChipModule,
+        SidebarModule
     ],
     declarations: [EmptyDemoComponent]
 })
