@@ -19,6 +19,7 @@ import {FormsModule} from "@angular/forms";
 import {PickListModule} from "primeng/picklist";
 import {ChipModule} from "primeng/chip";
 import {SidebarModule} from "primeng/sidebar";
+import {TabMenuModule} from "primeng/tabmenu";
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import {SidebarModule} from "primeng/sidebar";
         FormsModule,
         PickListModule,
         ChipModule,
-        SidebarModule
+        SidebarModule,
+        TabMenuModule
     ],
     declarations: [EmptyDemoComponent]
 })

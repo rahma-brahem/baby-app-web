@@ -8,6 +8,10 @@ $fa-font-path: "~font-awesome/fonts";
 
 
 }
+.dd-style {
+    width: 100% !important;
+    background-color: greenyellow;
+}
 
 .h5 #header {
     font-size: 62px;
@@ -16,9 +20,12 @@ $fa-font-path: "~font-awesome/fonts";
 .chip {
     display: block;
     margin-bottom: 10px;
+    //width: 150px;
 }
 
-
+:host ::ng-deep .custom-dd .p-dropdown {
+    width: 400px;
+}
 
 
 

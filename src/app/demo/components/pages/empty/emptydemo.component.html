@@ -10,11 +10,28 @@
     </div>
 </div>
 
+<!--SIDE BAR-->
+    <p-sidebar [(visible)]="sidebarVisible"  position="right">
 
-    <p-sidebar [(visible)]="sidebarVisible" styleClass="w-30rem"position="right">
+            <p-card [style]="{height: '450px'}">
+                <h5>Choisir un enfant</h5>
+                <p-dropdown
+                    [options]="listEnfant"
+                    [(ngModel)]="selectedkid"
+                    placeholder="Selectionner un enfant"
+                    optionLabel="name"
+                    [showClear]="true">
 
-    </p-sidebar>
-    <p-button (click)="sidebarVisible = true" icon="pi pi-arrow-left" style=" position:fixed; right: 0px ;top: 200px;"></p-button>
+                </p-dropdown>
+            </p-card>
+
+        </p-sidebar>
+
+
+
+    <p-button (click)="sidebarVisible = true"  style="position:fixed; right:0px ; top:200px; "styleClass="p-button-rounded p-button-help">
+<img alt="logo" src="assets/image/baby-icon.png" style="width: 2rem" />
+    </p-button>
 
 
 <div style="display: flex">
@@ -24,20 +41,23 @@
 
     <div class="col-12 md:col-6">
         <div class="card border-primary mb-3  bg-primary overflow-auto" style="height: 25rem  ">
-            <h5 class="p-card-title">Socioaffectif</h5>
-
+            <h5 class="p-card-title" >Socioaffectif</h5>
+            <p-tabMenu [model]="items" [activeItem]="activeItem"></p-tabMenu>
             <p-button (click)="toggleDropdownSocioaffectif()" styleClass="p-button-rounded p-button-text">
                 <img alt="logo" src="assets/image/pencil.png" style="width: 2rem"/>
             </p-button>
 
             <p-dropdown
-                (onChange)="onCitySelectionSo()"
+
+                class="custom-dd"
+                (onChange)="onOptionSelectionSo()"
                 *ngIf="showDropdownSocioaffectif"
                 [(ngModel)]="selectedOptionSo"
                 [filter]="true"
                 [options]="socioaffectif"
                 optionLabel="label"
                 placeholder="choisir une activitée"
+
             >
             </p-dropdown>
 
@@ -61,6 +81,7 @@
             </p-button>
 
             <p-dropdown
+                class="custom-dd"
                 (onChange)=" onOptionSelectionC()"
                 *ngIf="showDropdownCognitif"
                 [(ngModel)]="selectedOptionC"
@@ -68,6 +89,7 @@
                 [options]="cognitif"
                 optionLabel="label"
                 placeholder="choisir une activitée"
+                [showClear]="true"
             >
             </p-dropdown>
 
@@ -93,6 +115,7 @@
             </p-button>
 
             <p-dropdown
+                class="custom-dd"
                 (onChange)=" onOptionSelectionPh()"
                 *ngIf="showDropdownPhysique"
                 [(ngModel)]="selectedOptionPh"
@@ -100,6 +123,7 @@
                 [options]="physique"
                 optionLabel="label"
                 placeholder="choisir une activitée"
+                [showClear]="true"
             >
             </p-dropdown>
 
@@ -125,6 +149,7 @@
             </p-button>
 
             <p-dropdown
+                class="custom-dd"
                 (onChange)=" onOptionSelectionL()"
                 *ngIf="showDropdownLanguage"
                 [(ngModel)]="selectedOptionL"
@@ -132,6 +157,7 @@
                 [options]="language"
                 optionLabel="label"
                 placeholder="choisir une activitée"
+                [showClear]="true"
             >
             </p-dropdown>
 

@@ -1,15 +1,19 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {PrimeIcons, SelectItem} from 'primeng/api';
+import { Component, OnInit} from '@angular/core';
+
 import {MenuItem} from 'primeng/api';
 
-import {MessageService} from 'primeng/api';
 
-import { PickListModule } from 'primeng/picklist';
-import {Product} from "../../../api/product";
-import {ProductService} from "../../../service/product.service";
 
 interface Options{
     label:string,
+}
+interface Enfant{
+    name:string,
+    cognitif:Options[],
+    socioaffectif:Options[],
+    language:Options[],
+    physique:Options[],
+
 }
 
 @Component({
@@ -37,16 +41,18 @@ export class EmptyDemoComponent  implements OnInit {
     language:Options[]=[];
     showDropdownLanguage = false;
     selectedOptionL:Options|undefined;
-    selectedOptionsL:any=new Set();
+    selectedOptionsL:any[]=[];
 
 
     sidebarVisible: boolean = false;
+    listEnfant:Enfant[]=[];
+    selectedkid:Enfant|undefined;
 
+    /*item?: string;
+    items?: SelectItem[];*/
+    items: MenuItem[] =[];
 
-
-    item?: string;
-    items?: SelectItem[];
-
+    activeItem!: MenuItem ;
     ngOnInit() {
         this.socioaffectif = [
             { label: 'Manger tout seul'},
@@ -63,6 +69,26 @@ export class EmptyDemoComponent  implements OnInit {
         ];
         this.language=[{label:'parler correctement'},
             {label:'dire une phrase correcte'}];
+        this.listEnfant=[{name:'enfant1',
+    cognitif:this.cognitif,
+    socioaffectif:this.socioaffectif,
+    language:this.language,
+    physique:this.physique,
+},
+                {name:"enfant2",
+                    cognitif:this.cognitif,
+                    socioaffectif:this.socioaffectif,
+                    language:this.language,
+                    physique:this.physique
+                }];
+        this.items = [
+            { label: 'Options', icon: 'pi pi-fw pi-home' },
+            { label: 'Défis', icon: 'pi pi-fw pi-calendar' },
+
+        ];
+
+        this.activeItem = this.items[0];
+
     }
 
 
@@ -80,8 +106,9 @@ export class EmptyDemoComponent  implements OnInit {
     toggleDropdownLanguage() {
         this.showDropdownLanguage = !this.showDropdownLanguage;
     }
-    onCitySelectionSo() {
+    onOptionSelectionSo() {
         if (this.selectedOptionSo) {
+
             this.selectedOptionsSo.push(this.selectedOptionSo);
             console.log(this.selectedOptionsSo);
         }
@@ -98,39 +125,8 @@ export class EmptyDemoComponent  implements OnInit {
     }
     onOptionSelectionL(){
         if (this.selectedOptionL) {
-            this.selectedOptionsL.add(this.selectedOptionL);
+            this.selectedOptionsL.push(this.selectedOptionL);
         }
         console.log(this.selectedOptionsL);
     }
-
-
-    /* When the user clicks on the button,
-    toggle between hiding and showing the dropdown content */
-   myFunction() {
-
-        document.getElementById("myDropdown")!.classList.toggle("show");
-
-    }
-
-    filterFunction() {
-        var input, filter, txtValue, div, a, i,p,option,button;
-        input = document.getElementById("myInput");
-        // @ts-ignore
-        filter = input!.value.toUpperCase();
-        div = document.getElementById("myDropdown");
-        a = div!.getElementsByTagName("option");
-        for (i = 0; i < a.length; i++) {
-            txtValue = a[i].textContent || a[i].innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                a[i].style.display = "";
-            } else {
-                a[i].style.display = "none";
-            }
-        }
-
-
-
-
-
-}
 }
