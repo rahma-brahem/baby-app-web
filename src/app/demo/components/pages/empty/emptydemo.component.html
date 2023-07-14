@@ -28,8 +28,6 @@
 
         </p-sidebar>
 
-
-
     <p-button (click)="sidebarVisible = true"  style="position:fixed; right:0px ; top:200px; "styleClass="p-button-rounded p-button-help">
 <img alt="logo" src="assets/image/baby-icon.png" style="width: 2rem" />
     </p-button>
@@ -41,27 +39,31 @@
     <!--Socioaffectif card-->
 
     <div class="col-12 md:col-6">
-        <div class="card border-primary mb-3  bg-primary overflow-auto" style="height: 25rem  ">
+        <div class="card border-primary mb-3  bg-primary " style="height: 28rem  ">
             <h5 class="p-card-title" >Socioaffectif</h5>
-            <p-tabView>
-                <p-tabPanel header="Options">
-            <p-button (click)="toggleDropdownSocioaffectif()" styleClass="p-button-rounded p-button-text">
-                <img alt="logo" src="assets/image/pencil.png" style="width: 2rem"/>
-            </p-button>
+            <p-tabView >
 
-            <p-dropdown
+                <p-tabPanel header="Actions" >
+                    <p-button (click)="toggleDropdownSocioaffectif()" styleClass="p-button-rounded p-button-text">
+                        <img alt="logo" src="assets/image/pencil.png" style="width: 2rem"/>
+                    </p-button>
+                    <p-dropdown
 
-                class="custom-dd"
-                (onChange)="onOptionSelectionSo()"
-                *ngIf="showDropdownSocioaffectif"
-                [(ngModel)]="selectedOptionSo"
-                [filter]="true"
-                [options]="socioaffectif"
-                optionLabel="label"
-                placeholder="choisir une activitée">
-            </p-dropdown>
+                        class="custom-dd"
+                        (onChange)="onOptionSelectionSo()"
+                        *ngIf="showDropdownSocioaffectif"
+                        [(ngModel)]="selectedOptionSo"
+                        [filter]="true"
+                        [options]="socioaffectif"
+                        optionLabel="label"
+                        placeholder="choisir une activitée">
+                    </p-dropdown>
+                    <p-scrollPanel [style]="{
+                    width: '100%',
+                    height: '170px',
 
-            <div *ngIf="selectedOptionsSo.length > 0" class="selected-city">
+                    }">
+                        <div *ngIf="selectedOptionsSo.length > 0" class="selected-city">
 
                 <div class="chips-container">
                     <p-chip  *ngFor="let option of selectedOptionsSo" [removable]="true" class="chip"
@@ -69,11 +71,19 @@
 
                 </div>
             </div>
+                    </p-scrollPanel>
+
                 </p-tabPanel>
+
                 <p-tabPanel header="Défis">
+                    <p-scrollPanel [style]="{
+                    width: '100%',
+                    height: '220px',
+
+                    }">
                    <p-chip  *ngFor="let option of selectedOptionsSo" class="chip"
                              label="{{ option.defi }}" ></p-chip>
-
+                </p-scrollPanel>
                 </p-tabPanel>
 
             </p-tabView>
@@ -83,8 +93,10 @@
     <!--Congitif card-->
 
     <div class="col-12 md:col-6">
-        <div class="card border-primary mb-3  bg-primary  overflow-auto" style="height: 25rem ">
+        <div class="card border-primary mb-3  bg-primary  " style="height: 28rem ">
             <h5 class="p-card-title">Cognitif</h5>
+            <p-tabView>
+                <p-tabPanel header="Actions">
             <p-button (click)="toggleDropdownCognitif()" styleClass="p-button-rounded p-button-text">
                 <img alt="logo" src="assets/image/pencil.png" style="width: 2rem"/>
             </p-button>
@@ -101,6 +113,11 @@
                 [showClear]="true"
             >
             </p-dropdown>
+                    <p-scrollPanel [style]="{
+                    width: '100%',
+                    height: '170px',
+
+                    }">
 
             <div *ngIf="selectedOptionsC.length > 0" class="selected-city">
 
@@ -109,16 +126,34 @@
                             label="{{ option.label }}" (onRemove)="removefromCo(option)"></p-chip>
                 </div>
             </div>
+                    </p-scrollPanel>
+                </p-tabPanel>
+                <p-tabPanel header="Défis">
+                    <p-scrollPanel [style]="{
+                    width: '100%',
+                    height: '220px',
 
+                    }">
+                    <p-chip  *ngFor="let option of selectedOptionsC" class="chip"
+                             label="{{ option.defi }}" ></p-chip>
+                    </p-scrollPanel>
+                </p-tabPanel>
+            </p-tabView>
         </div>
     </div>
 </div>
+
+
+
+
 <div class="flex">
     <!--Physique card-->
 
     <div class="col-12 md:col-6">
-        <div class="card border-primary mb-3  bg-primary overflow-auto "  style="height: 25rem ">
+        <div class="card border-primary mb-3  bg-primary  "  style="height: 28rem ">
             <h5 class="p-card-title">Physique</h5>
+            <p-tabView>
+                <p-tabPanel header="Actions">
             <p-button (click)="toggleDropdownPhysique()" styleClass="p-button-rounded p-button-text">
                 <img alt="logo" src="assets/image/pencil.png" style="width: 2rem"/>
             </p-button>
@@ -135,7 +170,11 @@
                 [showClear]="true"
             >
             </p-dropdown>
+                <p-scrollPanel [style]="{
+                    width: '100%',
+                    height: '170px',
 
+                    }">
             <div *ngIf="selectedOptionsPh.length > 0" class="selected-city">
 
                 <div class="chips-container">
@@ -143,16 +182,25 @@
                             label="{{ option.label }}"(onRemove)="removefromPh(option)"></p-chip>
                 </div>
             </div>
-
+                </p-scrollPanel>
+                </p-tabPanel>
+                <p-tabPanel header="Défis">
+                    <p-scrollPanel [style]="{height:'220px'}">
+                    <p-chip *ngFor="let option of selectedOptionsPh"  class="chip"
+                            label="{{ option.defi }}"></p-chip>
+                    </p-scrollPanel>
+                </p-tabPanel>
+            </p-tabView>
 
         </div>
     </div>
 
     <!--Language card-->
     <div class="col-12 md:col-6">
-        <div class="card border-primary mb-3  bg-primary  overflow-auto" style="height: 25rem ">
+        <div class="card border-primary mb-3  bg-primary  " style="height: 28rem ">
             <h5 class="p-card-title">Language</h5>
-
+<p-tabView>
+    <p-tabPanel header="Actions">
             <p-button (click)="toggleDropdownLanguage()" styleClass="p-button-rounded p-button-text">
                 <img alt="logo" src="assets/image/pencil.png" style="width: 2rem"/>
             </p-button>
@@ -169,6 +217,7 @@
                 [showClear]="true"
             >
             </p-dropdown>
+        <p-scrollPanel [style]="{height:'170px'}">
 
             <div *ngIf="selectedOptionsL.length > 0" class="selected-city">
 
@@ -177,8 +226,16 @@
                             label="{{ option.label }}"(onRemove)="removefromLa(option)"></p-chip>
                 </div>
             </div>
+        </p-scrollPanel>
+    </p-tabPanel>
+    <p-tabPanel header="Défis">
+        <p-scrollPanel [style]="{height:'220px'}">
+            <p-chip *ngFor="let option of selectedOptionsL" class="chip"
+                    label="{{ option.defi }}"></p-chip>
+        </p-scrollPanel>
+    </p-tabPanel>
 
-
+</p-tabView>
         </div>
     </div>
 </div>

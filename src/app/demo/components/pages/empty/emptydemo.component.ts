@@ -1,6 +1,7 @@
-import { Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {EnrolledKid} from "./model/EnrolledKid";
+import {Gender} from "./model/Gender";
 
-import {MenuItem} from 'primeng/api';
 //import {fileURLToPath} from "url";
 
 
@@ -50,11 +51,13 @@ export class EmptyDemoComponent  implements OnInit {
     sidebarVisible: boolean = false;
     listEnfant:Enfant[]=[];
     selectedEnfant!:Enfant;
-    chiplabel:string|undefined;
+
     r:HTMLElement|null = document.querySelector(':root');
 
     /*item?: string;
     items?: SelectItem[];*/
+    date:Date=new Date("2019-01-16");
+    //kid1:EnrolledKid=new EnrolledKid('1','sarra',Gender.boy, '123','parent of sarra',this.date,);
 
     ngOnInit() {
         this.socioaffectif = [

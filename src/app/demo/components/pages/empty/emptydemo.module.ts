@@ -22,6 +22,7 @@ import {SidebarModule} from "primeng/sidebar";
 import {TabMenuModule} from "primeng/tabmenu";
 import {TabViewModule} from "primeng/tabview";
 import {ListboxModule} from "primeng/listbox";
+import {ScrollPanelModule} from "primeng/scrollpanel";
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import {ListboxModule} from "primeng/listbox";
         SidebarModule,
         TabMenuModule,
         TabViewModule,
-        ListboxModule
+        ListboxModule,
+        ScrollPanelModule
     ],
     declarations: [EmptyDemoComponent]
 })
