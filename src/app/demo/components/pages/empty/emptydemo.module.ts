@@ -20,6 +20,8 @@ import {PickListModule} from "primeng/picklist";
 import {ChipModule} from "primeng/chip";
 import {SidebarModule} from "primeng/sidebar";
 import {TabMenuModule} from "primeng/tabmenu";
+import {TabViewModule} from "primeng/tabview";
+import {ListboxModule} from "primeng/listbox";
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import {TabMenuModule} from "primeng/tabmenu";
         PickListModule,
         ChipModule,
         SidebarModule,
-        TabMenuModule
+        TabMenuModule,
+        TabViewModule,
+        ListboxModule
     ],
     declarations: [EmptyDemoComponent]
 })

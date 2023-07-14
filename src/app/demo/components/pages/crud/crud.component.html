@@ -94,7 +94,7 @@
                     <textarea id="description" pInputTextarea [(ngModel)]="product.description" required rows="3" cols="20"></textarea>
                 </div>
                 <div class="field">
-                    <label for="status">Inventory Status</label>
+                    <!--<label for="status">Inventory Status</label>-->
                     <p-dropdown [(ngModel)]="product.inventoryStatus" inputId="inventoryStatus" optionValue="label" [options]="statuses" placeholder="Select">
                         <ng-template pTemplate="selectedItem">
                             <span *ngIf="product && product.inventoryStatus" [class]="'product-badge status-' + product.inventoryStatus.toString().toLowerCase()">{{product.inventoryStatus}}</span>

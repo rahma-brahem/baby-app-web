@@ -1,14 +1,17 @@
 import { Component, OnInit} from '@angular/core';
 
 import {MenuItem} from 'primeng/api';
+//import {fileURLToPath} from "url";
 
 
 
 interface Options{
     label:string,
+    defi:string,
 }
 interface Enfant{
     name:string,
+    genre:string,
     cognitif:Options[],
     socioaffectif:Options[],
     language:Options[],
@@ -25,7 +28,7 @@ export class EmptyDemoComponent  implements OnInit {
     socioaffectif: Options[]=[]  ;
     showDropdownSocioaffectif = false;
     selectedOptionSo: Options | undefined;
-    selectedOptionsSo: any[] = [];
+    selectedOptionsSo: Options[] = [];
 
 
     cognitif:Options[]=[];
@@ -46,48 +49,46 @@ export class EmptyDemoComponent  implements OnInit {
 
     sidebarVisible: boolean = false;
     listEnfant:Enfant[]=[];
-    selectedkid:Enfant|undefined;
+    selectedEnfant!:Enfant;
+    chiplabel:string|undefined;
+    r:HTMLElement|null = document.querySelector(':root');
 
     /*item?: string;
     items?: SelectItem[];*/
-    items: MenuItem[] =[];
 
-    activeItem!: MenuItem ;
     ngOnInit() {
         this.socioaffectif = [
-            { label: 'Manger tout seul'},
-            { label: 'Marcher'},
-            { label: 'Parler correctement' },
-            { label: 'Jouer ' },
+            { label: 'Manger tout seul',defi:"hellooooo"},
+            { label: 'Marcher',defi:"hellooooo"},
+            { label: 'Parler correctement',defi:"hellooooo" },
+            { label: 'Jouer ' ,defi:"hellooooo"},
 
         ];
-        this.cognitif=[{label:" l' enfant peut comparer la taille de différents objets en utilisant des mots comme « plus gros » ou « plus petit "},
-            {label:"il contrôle peu ses pensées, ses paroles ou ses gestes. Par exemple, il parle par-dessus vous quand vous parlez"}];
+        this.cognitif=[{label:" l' enfant peut comparer la taille de différents objets en utilisant des mots comme « plus gros » ou « plus petit ",defi:"hellooooo"},
+            {label:"il contrôle peu ses pensées, ses paroles ou ses gestes. Par exemple, il parle par-dessus vous quand vous parlez",defi:"hellooooo"}];
         this.physique=[
-            {label:'courir'},
-            {label:'marcher'},
+            {label:'courir',defi:"hellooooo"},
+            {label:'marcher',defi:"hellooooo"},
         ];
-        this.language=[{label:'parler correctement'},
-            {label:'dire une phrase correcte'}];
-        this.listEnfant=[{name:'enfant1',
-    cognitif:this.cognitif,
-    socioaffectif:this.socioaffectif,
-    language:this.language,
-    physique:this.physique,
+        this.language=[{label:'parler correctement',defi:"hellooooo"},
+            {label:'dire une phrase correcte',defi:"hellooooo"}];
+        this.listEnfant=[{name:'fille',
+            genre:"f",
+            cognitif:this.cognitif,
+            socioaffectif:this.socioaffectif,
+            language:this.language,
+            physique:this.physique,
 },
-                {name:"enfant2",
+                {name:"garçon",
+                    genre:"m",
                     cognitif:this.cognitif,
                     socioaffectif:this.socioaffectif,
                     language:this.language,
                     physique:this.physique
                 }];
-        this.items = [
-            { label: 'Options', icon: 'pi pi-fw pi-home' },
-            { label: 'Défis', icon: 'pi pi-fw pi-calendar' },
 
-        ];
 
-        this.activeItem = this.items[0];
+
 
     }
 
@@ -108,25 +109,77 @@ export class EmptyDemoComponent  implements OnInit {
     }
     onOptionSelectionSo() {
         if (this.selectedOptionSo) {
+            if(!this.searchOption(this.selectedOptionSo,this.selectedOptionsSo)){
 
-            this.selectedOptionsSo.push(this.selectedOptionSo);
+            this.selectedOptionsSo.push(this.selectedOptionSo);}
             console.log(this.selectedOptionsSo);
         }
     }
     onOptionSelectionC(){
         if (this.selectedOptionC) {
+            if(!this.searchOption(this.selectedOptionC,this.selectedOptionsC)){
             this.selectedOptionsC.push(this.selectedOptionC);
-        }
+        }}
     }
     onOptionSelectionPh(){
         if (this.selectedOptionPh) {
-            this.selectedOptionsPh.push(this.selectedOptionPh);
+            if(!this.searchOption(this.selectedOptionPh,this.selectedOptionsPh)){
+            this.selectedOptionsPh.push(this.selectedOptionPh);}
         }
     }
     onOptionSelectionL(){
         if (this.selectedOptionL) {
-            this.selectedOptionsL.push(this.selectedOptionL);
+            if(!this.searchOption(this.selectedOptionL,this.selectedOptionsL)){
+            this.selectedOptionsL.push(this.selectedOptionL);}
         }
         console.log(this.selectedOptionsL);
     }
+    searchOption(option:Options,list:Options[]):boolean{
+        var test =false;
+        for(let i:number=0;i<list.length;i++){
+            if (list[i]===option){
+                test=true;
+            }
+        }
+        return (test);
+    }
+    removefromSo(option:Options){
+        let index=this.selectedOptionsSo.indexOf(option);
+        this.selectedOptionsSo.splice(index,1);
+        console.log(this.selectedOptionsSo);
+    }
+    removefromCo(option:Options){
+        let index=this.selectedOptionsC.indexOf(option);
+        this.selectedOptionsC.splice(index,1);
+        console.log(this.selectedOptionsC);
+    }
+    removefromPh(option:Options){
+        let index=this.selectedOptionsPh.indexOf(option);
+        this.selectedOptionsPh.splice(index,1);
+        console.log(this.selectedOptionsPh);
+    }
+    removefromLa(option:Options){
+        let index=this.selectedOptionsL.indexOf(option);
+        this.selectedOptionsL.splice(index,1);
+        console.log(this.selectedOptionsL);
+    }
+
+
+    makechange(selectedEnfant:Enfant){
+        console.log(selectedEnfant);
+        this.selectedOptionsSo=selectedEnfant.socioaffectif;
+        this.selectedOptionsPh=selectedEnfant.physique;
+        this.selectedOptionsL=selectedEnfant.language;
+        this.selectedOptionsC=selectedEnfant.cognitif;
+if(this.selectedEnfant.genre=='f'){
+        this.r!.style.setProperty('--gendre', 'linear-gradient(90deg, hsla(12, 89%, 89%, 1) 0%, hsla(329, 82%, 76%, 1) 50%, hsla(342, 95%, 78%, 1) 100%)');}
+else{
+    this.r!.style.setProperty('--gendre', 'linear-gradient(90deg, hsla(176, 61%, 87%, 1) 0%, hsla(150, 54%, 86%, 1) 50%, hsla(301, 68%, 84%, 1) 100%)');}
+
+
+        console.log(this.r!.style.getPropertyValue('--gendre'));
+
+    }
+
+    //protected readonly fileURLToPath = fileURLToPath;
 }
