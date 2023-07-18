@@ -2,7 +2,7 @@
 <div class="card border-primary mb-3 bg-primary">
     <div style="display: flex; align-items: center;">
         <img alt="" id="img1" src="assets/image/baby1.svg" style="width: 100px;height: 100px;">
-        <h5 id="header" style="text-align: center; margin: 0 auto; ">PORTRAIT DE L'ENFANT</h5>
+        <h5 id="header" style="text-align: center; margin: 0 auto; " >PORTRAIT DE L'ENFANT</h5>
     </div>
     <div style="display: flex; align-items: center;">
         <h5 style="text-align: center;margin: 0 auto; font-family: cursive, sans-serif;">INTERVENTIONS ET SOUTIENS DE
@@ -60,7 +60,7 @@
                     </p-dropdown>
                     <p-scrollPanel [style]="{
                     width: '100%',
-                    height: '170px',
+                    height: '130px',
 
                     }">
                         <div *ngIf="selectedOptionsSo.length > 0" class="selected-city">
@@ -246,8 +246,7 @@
     <h5>Commentaires et anecdotes</h5>
     <div class="col-12 md:col-6">
         <img alt="logo" src="assets/image/pencil.png" style="width: 2rem"/>
-        <textarea class="p-Inputtext-res" pInputTextarea placeholder="Vos Commentaires"
-                  style="min-width: 770px "></textarea>
+        <input pInputText  type="text"   placeholder="Vos Commentaires" [(ngModel)]="comment" [style]="{width:'900px'}">
 
     </div>
 

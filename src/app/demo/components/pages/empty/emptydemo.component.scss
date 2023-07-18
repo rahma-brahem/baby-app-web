@@ -32,6 +32,10 @@ $fa-font-path: "~font-awesome/fonts";
 :host ::ng-deep .custom-dd .p-dropdown {
     width: 300px;
 }
+:host ::ng-deep .p-dropdown-items {
+    width: 300px;
+    overflow: scroll;
+}
 
 
 

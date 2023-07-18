@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {EnrolledKid} from "./model/EnrolledKid";
-import {Gender} from "./model/Gender";
+
 
 //import {fileURLToPath} from "url";
 
@@ -53,7 +52,7 @@ export class EmptyDemoComponent  implements OnInit {
     selectedEnfant!:Enfant;
 
     r:HTMLElement|null = document.querySelector(':root');
-
+    comment: string|undefined;
     /*item?: string;
     items?: SelectItem[];*/
     date:Date=new Date("2019-01-16");
@@ -185,4 +184,5 @@ else{
     }
 
     //protected readonly fileURLToPath = fileURLToPath;
+
 }

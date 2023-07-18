@@ -1,17 +1,16 @@
-import {ActionChallenge} from "./ActionChallenge";
+import {Recommendation} from "./Recommendation";
 
-export class Portrait{
+export class Portrait {
     date:Date;
-    socioaffectif:ActionChallenge[];
-    cognitif:ActionChallenge[];
-    physique:ActionChallenge[];
-    language:ActionChallenge[];
+    observations:string;
+    weight:number;
+    height:number;
+    recommendation:Recommendation[]=[];
 
-    constructor(date: Date, socioaffectif: ActionChallenge[], cognitif: ActionChallenge[], physique: ActionChallenge[], language: ActionChallenge[]) {
+    constructor(date: Date, observations: string, weight: number, height: number) {
         this.date = date;
-        this.socioaffectif = socioaffectif;
-        this.cognitif = cognitif;
-        this.physique = physique;
-        this.language = language;
+        this.observations = observations;
+        this.weight = weight;
+        this.height = height;
     }
 }

@@ -1,4 +1,4 @@
-export enum CardsType {
+export enum Category {
     socioaffectif,
     cognitif,
     physique,
