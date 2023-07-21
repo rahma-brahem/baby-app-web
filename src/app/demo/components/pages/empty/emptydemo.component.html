@@ -8,23 +8,31 @@
         <h5 style="text-align: center;margin: 0 auto; font-family: cursive, sans-serif;">INTERVENTIONS ET SOUTIENS DE
             L'EDUCATRICE</h5>
     </div>
+    <!--<p-button (click)="login()">rahmaaaaaaaaaaaaaaaaaaaa</p-button>-->
 </div>
 
 <!--SIDE BAR-->
     <p-sidebar [(visible)]="sidebarVisible"  position="right">
-
+        <p-chip label="{{educator1.firstName}}" image="assets/demo/images/avatar/amyelsner.png" styleClass="m-1 custom-chip"></p-chip>
 
                 <h5>Choisir un enfant</h5>
 
                 <p-listbox [options]="listEnfant"
                            [(ngModel)]="selectedEnfant"
-                           (onChange)="makechange(selectedEnfant)"
-                           optionLabel="name"
+                           (onChange)="makeChange(selectedEnfant)"
+                           optionLabel="firstName"
                            [filter]="true"
                            placeholder="Selectionner un enfant">
                 </p-listbox>
 
-
+        <p-slideMenu
+            #menu
+            [model]="gfg"
+            effectDuration="1200"
+            [viewportHeight]="200"
+            easing="ease-in"
+        >
+        </p-slideMenu>
 
         </p-sidebar>
 
@@ -55,7 +63,7 @@
                         [(ngModel)]="selectedOptionSo"
                         [filter]="true"
                         [options]="socioaffectif"
-                        optionLabel="label"
+                        optionLabel="activity"
                         placeholder="choisir une activitée">
                     </p-dropdown>
                     <p-scrollPanel [style]="{
@@ -63,11 +71,11 @@
                     height: '130px',
 
                     }">
-                        <div *ngIf="selectedOptionsSo.length > 0" class="selected-city">
+                        <div *ngIf="selectedOptionsSo.length > 0" >
 
                 <div class="chips-container">
                     <p-chip  *ngFor="let option of selectedOptionsSo" [removable]="true" class="chip"
-                            label="{{ option.label}}"  (onRemove)="removefromSo(option)"></p-chip>
+                            label="{{ option.activity}}"  (onRemove)="removefromSo(option)"></p-chip>
 
                 </div>
             </div>
@@ -81,8 +89,8 @@
                     height: '220px',
 
                     }">
-                   <p-chip  *ngFor="let option of selectedOptionsSo" class="chip"
-                             label="{{ option.defi }}" ></p-chip>
+                        <p-chip  *ngFor="let option of selectedOptionsSo" class="chip"
+                                 label="{{ option.listExercices }}" ></p-chip>
                 </p-scrollPanel>
                 </p-tabPanel>
 
@@ -108,7 +116,7 @@
                 [(ngModel)]="selectedOptionC"
                 [filter]="true"
                 [options]="cognitif"
-                optionLabel="label"
+                optionLabel="activity"
                 placeholder="choisir une activitée"
                 [showClear]="true"
             >
@@ -123,7 +131,7 @@
 
                 <div class="chips-container">
                     <p-chip *ngFor="let option of selectedOptionsC" [removable]="true" class="chip"
-                            label="{{ option.label }}" (onRemove)="removefromCo(option)"></p-chip>
+                            label="{{ option.activity }}" (onRemove)="removefromCo(option)"></p-chip>
                 </div>
             </div>
                     </p-scrollPanel>
@@ -135,7 +143,7 @@
 
                     }">
                     <p-chip  *ngFor="let option of selectedOptionsC" class="chip"
-                             label="{{ option.defi }}" ></p-chip>
+                             label="{{ option.listExercices}}" ></p-chip>
                     </p-scrollPanel>
                 </p-tabPanel>
             </p-tabView>
@@ -165,7 +173,7 @@
                 [(ngModel)]="selectedOptionPh"
                 [filter]="true"
                 [options]="physique"
-                optionLabel="label"
+                optionLabel="activity"
                 placeholder="choisir une activitée"
                 [showClear]="true"
             >
@@ -179,7 +187,7 @@
 
                 <div class="chips-container">
                     <p-chip *ngFor="let option of selectedOptionsPh" [removable]="true" class="chip"
-                            label="{{ option.label }}"(onRemove)="removefromPh(option)"></p-chip>
+                            label="{{ option.activity }}"(onRemove)="removefromPh(option)"></p-chip>
                 </div>
             </div>
                 </p-scrollPanel>
@@ -187,7 +195,7 @@
                 <p-tabPanel header="Défis">
                     <p-scrollPanel [style]="{height:'220px'}">
                     <p-chip *ngFor="let option of selectedOptionsPh"  class="chip"
-                            label="{{ option.defi }}"></p-chip>
+                            label="{{ option.listExercices }}"></p-chip>
                     </p-scrollPanel>
                 </p-tabPanel>
             </p-tabView>
@@ -212,7 +220,7 @@
                 [(ngModel)]="selectedOptionL"
                 [filter]="true"
                 [options]="language"
-                optionLabel="label"
+                optionLabel="activity"
                 placeholder="choisir une activitée"
                 [showClear]="true"
             >
@@ -223,7 +231,7 @@
 
                 <div class="chips-container">
                     <p-chip *ngFor="let option of selectedOptionsL" [removable]="true" class="chip"
-                            label="{{ option.label }}"(onRemove)="removefromLa(option)"></p-chip>
+                            label="{{ option.activity}}"(onRemove)="removefromLa(option)"></p-chip>
                 </div>
             </div>
         </p-scrollPanel>
@@ -231,7 +239,7 @@
     <p-tabPanel header="Défis">
         <p-scrollPanel [style]="{height:'220px'}">
             <p-chip *ngFor="let option of selectedOptionsL" class="chip"
-                    label="{{ option.defi }}"></p-chip>
+                    label="{{ option.listExercices }}"></p-chip>
         </p-scrollPanel>
     </p-tabPanel>
 

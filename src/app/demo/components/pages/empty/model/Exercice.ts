@@ -1,7 +1,7 @@
 export class Exercice {
-    description:string[];
+    description:string;
 
-    constructor(description: string[]) {
+    constructor(description: string) {
         this.description = description;
     }
 }

@@ -23,6 +23,9 @@ import {TabMenuModule} from "primeng/tabmenu";
 import {TabViewModule} from "primeng/tabview";
 import {ListboxModule} from "primeng/listbox";
 import {ScrollPanelModule} from "primeng/scrollpanel";
+import {PanelMenuModule} from "primeng/panelmenu";
+import {TieredMenuModule} from "primeng/tieredmenu";
+import {SlideMenuModule} from "primeng/slidemenu";
 
 
 @NgModule({
@@ -47,7 +50,10 @@ import {ScrollPanelModule} from "primeng/scrollpanel";
         TabMenuModule,
         TabViewModule,
         ListboxModule,
-        ScrollPanelModule
+        ScrollPanelModule,
+        PanelMenuModule,
+        TieredMenuModule,
+        SlideMenuModule
     ],
     declarations: [EmptyDemoComponent]
 })

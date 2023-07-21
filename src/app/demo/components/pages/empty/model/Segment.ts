@@ -5,10 +5,12 @@ export class Segment {
     from:number;
     to:number;
     gender:Gender;
-    listRecommendations:Recommendation[]=[];
+    //listRecommendations:Recommendation[];
     constructor(from: number, to: number, gender: Gender) {
         this.from = from;
         this.to = to;
         this.gender = gender;
+        //this.listRecommendations=listRecommendation;
+
     }
 }

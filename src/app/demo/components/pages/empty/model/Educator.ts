@@ -8,23 +8,23 @@ export class Educator {
     id:string;
     firstName:string;
     lastName:string;
-    maxKidsPerEducator:number;
+    maxKids:number;
     email:string;
     phone:number;
-    user:User;
+    user?:User;
     listKids:Kid[];
-    listPortraits:Portrait[];
 
 
-    constructor(id: string, firstName: string, lastName: string, maxKidsPerEducator: number, email: string, phone: number,kids:Kid[], listPortraits:Portrait[],user:User) {
+
+    constructor(id: string, firstName: string, lastName: string, maxKidsPerEducator: number, email: string, phone: number,kids:Kid[]) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.maxKidsPerEducator = maxKidsPerEducator;
+        this.maxKids = maxKidsPerEducator;
         this.email = email;
-        this.user=user;
+        //this.user=user;
         this.phone = phone;
         this.listKids=kids;
-        this.listPortraits=listPortraits;
+
     }
 }
